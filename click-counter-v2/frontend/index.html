@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Click Counter v2</title>
+
+  <!--
+    TAILWIND CSS VIA CDN
+    ─────────────────────────────────────────────────────────────────
+    In v1 we wrote our own style.css.
+    Here we use Tailwind's CDN build instead — no npm, no build step.
+    This one <script> tag gives us thousands of utility classes like
+    "text-4xl", "bg-blue-600", "rounded-xl", etc.
+    Trade-off: the CDN build is ~300 KB; for production you'd run the
+    Tailwind CLI to tree-shake it down to only the classes you use.
+  -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!--
+  bg-gray-100    → light grey page background
+  min-h-screen   → page is at least as tall as the viewport
+  flex           → use flexbox layout on the body
+  items-center   → centre children vertically
+  justify-center → centre children horizontally
+-->
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <!--
+    The "card" that holds all UI elements.
+    bg-white p-10 rounded-2xl shadow-xl → white card with padding, rounded corners, drop shadow
+    flex flex-col items-center gap-6    → stack children vertically, centred, with spacing
+    w-full max-w-sm                     → fills width up to 384 px (sm breakpoint)
+  -->
+  <div class="bg-white p-10 rounded-2xl shadow-xl flex flex-col items-center gap-6 w-full max-w-sm">
+
+    <!-- Page heading -->
+    <h1 class="text-3xl font-bold text-gray-800 tracking-tight">
+      Click Counter <span class="text-blue-600">v2</span>
+    </h1>
+
+    <!--
+      COUNT DISPLAY
+      ─────────────────────────────────────────────────────────────────
+      id="count-display" → JavaScript grabs this element to update the
+      number without a page reload (DOM manipulation).
+      The initial text "0" is what the user sees before the server
+      responds with the real persisted value.
+    -->
+    <p class="text-5xl font-extrabold text-blue-600 tabular-nums" id="count-display">
+      0
+    </p>
+    <p class="text-sm text-gray-400 -mt-4">Total Clicks</p>
+
+    <!--
+      CLICK ME BUTTON
+      ─────────────────────────────────────────────────────────────────
+      onclick is wired up in app.js so this file stays clean.
+      Tailwind classes:
+        bg-blue-600 hover:bg-blue-700 → colour changes on hover
+        active:scale-95               → slight shrink on click (tactile feel)
+        transition-all duration-150   → smooth animation
+        text-white font-semibold      → label styling
+        px-8 py-3 rounded-xl          → pill shape
+        cursor-pointer                → show hand cursor
+        shadow-md hover:shadow-lg     → shadow deepens on hover
+    -->
+    <button
+      id="click-btn"
+      class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all duration-150
+             text-white font-semibold px-8 py-3 rounded-xl cursor-pointer
+             shadow-md hover:shadow-lg w-full text-lg"
+    >
+      Click Me
+    </button>
+
+    <!--
+      STATUS LABEL
+      ─────────────────────────────────────────────────────────────────
+      This tiny label tells the user whether the optimistic (local)
+      count has been confirmed by the server yet.
+      Possible values set by app.js:
+        "synced"    → server confirmed; counts match
+        "syncing…"  → request in-flight
+        "error"     → network or server problem
+      Starting value is empty so nothing shows until the first click.
+    -->
+    <span
+      id="status-label"
+      class="text-xs font-medium text-gray-400 h-4 transition-colors duration-300"
+    ></span>
+
+  </div>
+
+  <!-- Load our JavaScript — defer means it runs after the HTML is parsed -->
+  <script src="app.js" defer></script>
+
+</body>
+</html>

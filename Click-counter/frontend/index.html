@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Counter</title>
+    <!-- Link to our external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main container — styled with flexbox in CSS to centre everything -->
+    <div class="container">
+        <h1>Click Counter</h1>
+
+        <!-- This element shows the current total; app.js will update its text -->
+        <p id="counter-display">Total Clicks: 0</p>
+
+        <!-- The button the user clicks to increment the count -->
+        <button id="click-btn">Click Me</button>
+
+        <!-- A small area to show error messages if the backend is unreachable -->
+        <p id="error-msg" class="error"></p>
+    </div>
+
+    <!-- Link to our JavaScript file (loaded after the HTML so the DOM exists) -->
+    <script src="app.js"></script>
+</body>
+</html>

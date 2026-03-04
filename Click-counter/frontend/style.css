@@ -1,0 +1,71 @@
+/* ===== Global Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Use flexbox to centre the container both horizontally and vertically */
+    display: flex;
+    justify-content: center;   /* horizontal centre */
+    align-items: center;       /* vertical centre   */
+    min-height: 100vh;         /* fill the full viewport height */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+/* ===== Main Container ===== */
+.container {
+    text-align: center;
+    background: #ffffff;
+    padding: 3rem 4rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Heading ===== */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+/* ===== Counter Display ===== */
+#counter-display {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #4a5568;
+}
+
+/* ===== Button ===== */
+#click-btn {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #4299e1;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Hover effect — slightly darker + a tiny lift */
+#click-btn:hover {
+    background-color: #3182ce;
+    transform: translateY(-2px);
+}
+
+/* Active (pressed) effect */
+#click-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== Error Message ===== */
+.error {
+    margin-top: 1rem;
+    color: #e53e3e;
+    font-size: 0.9rem;
+    min-height: 1.2em; /* reserve space so layout doesn't jump */
+}
