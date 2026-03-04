@@ -1,0 +1,31 @@
+[package]
+name = "click-counter-v3"
+version = "0.1.0"
+edition = "2021"
+
+# Rust's dependency system uses Cargo.toml (like package.json in Node or go.mod in Go).
+# Dependencies are specified with versions. Features are optional functionality.
+
+[dependencies]
+# actix-web: One of the fastest web frameworks benchmarked across any language.
+# It's built on top of tokio and provides routing, middleware, and request handling.
+actix-web = "4"
+
+# redis: Official Rust client for Redis. We use it to store/retrieve click counts.
+# The "tokio-comp" feature means it integrates with tokio's async runtime.
+redis = { version = "0.25", features = ["tokio-comp", "aio"] }
+
+# tokio: Rust's most popular async runtime. It provides async/await support and manages
+# the event loop that powers the web server. (Unlike Go, which has async built in to std lib.)
+tokio = { version = "1", features = ["full"] }
+
+# serde: The Rust ecosystem's serialization framework (like protobuf or JSON.stringify).
+# It converts Rust structs to/from JSON automatically.
+serde = { version = "1.0", features = ["derive"] }
+
+# serde_json: JSON serialization for serde (the most common format for APIs).
+serde_json = "1.0"
+
+# Optional: log for structured logging (not used in this simple version, but good to have)
+# log = "0.4"
+# env_logger = "0.11"
