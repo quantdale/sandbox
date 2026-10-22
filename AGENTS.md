@@ -37,3 +37,9 @@ Evidence precedence is `current source/manifests and executable validation` > `a
 ## Git safety
 
 Inspect status and diffs. Do not wipe experiment directories, generated history, or unrelated changes to obtain a clean state. Do not force-push or rewrite history. Keep commits scoped to the named experiment and distinguish intentional cleanup from product/learning changes.
+
+## Cross-project UX, DX, and AX principles
+
+Cut taglines, helper text and secondary labels. If a screen needs them to make sense, fix the layout.
+
+Make the best decision that will elevate all three: the user experience (UX), developer experience (DX), and agent experience (AX) always, without breaking anything.
